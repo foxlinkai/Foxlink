@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta property="og:url" content="https://foxlinkai.xyz">
+  <link rel="canonical" href="https://foxlinkai.xyz">
   <meta property="og:title" content="FoxLink — Intelligent Agent Protocol on Base">
   <meta property="og:description" content="7 autonomous AI agents that think, link, and act on-chain. Built on Base. $FXLK">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@FoxLinkAi">
+  <meta name="twitter:url" content="https://foxlinkai.xyz">
   <meta name="twitter:title" content="FoxLink — Intelligent Agent Protocol on Base">
   <meta name="twitter:description" content="7 autonomous AI agents that think, link, and act on-chain. Built on Base. $FXLK">
     <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000'/%3E%3Ctext x='50' y='70' font-size='70' text-anchor='middle' fill='white' font-family='Arial'%3E◈%3C/text%3E%3C/svg%3E">
@@ -99,7 +102,7 @@ nav{
 .hero{
   min-height:auto;display:flex;flex-direction:column;
   justify-content:center;align-items:center;
-  padding:90px 24px 60px;text-align:center;
+  padding:130px 24px 60px;text-align:center;
   position:relative;overflow:hidden;
   width:100%;
 }
@@ -122,7 +125,7 @@ nav{
 .hero-cta{margin-top:8px;justify-content:center;flex-wrap:wrap;justify-content:center;}
 .hero-eyebrow{margin:0;}
 @media(min-width:900px){
-  .hero{padding:110px 48px 90px;}
+  .hero{padding:140px 48px 90px;}
   .hero-logo{width:84px;height:84px;}
   .hero-top{gap:20px;}
   .hero-inner{max-width:780px;gap:22px;}
@@ -150,7 +153,7 @@ nav{
   line-height:1;letter-spacing:-1px;margin:0;
   opacity:0;animation:up .7s .25s forwards;
   white-space:nowrap;
-}
+margin-top:20px;}
 .hero-title span{display:inline;}
 .hero-title .hollow{-webkit-text-stroke:0.5px white;color:transparent;}
 .hero-sub{
@@ -518,7 +521,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
     <div class="hero-logo" aria-label="FoxLink"></div>
     <h1 class="hero-title"><span>FOX</span><span class="hollow">LINK</span></h1>
   </div>
-  <div class="hero-eyebrow" id="hero-eyebrow">Intelligent Agent Protocol · Base Chain · Est. 2025</div>
+  <div class="hero-eyebrow" id="hero-eyebrow">Intelligent Agent Protocol · Base Chain · Est. 2026</div>
   <p class="hero-sub" id="hero-sub">A modular AI agent network built on Base — where fox-grade intelligence meets on-chain connectivity. Autonomous agents that think, link, and act across decentralized protocols.</p>
   <div class="hero-cta">
     <a href="#agents" class="btn-w" id="cta1" onclick="openOverview(event)">Explore Agents</a>
@@ -699,7 +702,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
   <div class="rm-line reveal">
 
     <div class="rm-item active">
-      <div class="rm-phase" id="ph1-label">Phase 1 · Q3 2025</div>
+      <div class="rm-phase" id="ph1-label">Phase 1 · Q3 2026</div>
       <div class="rm-title">GENESIS</div>
       <ul class="rm-list" id="ph1-list">
         <li>Protocol architecture design and core contracts</li>
@@ -710,7 +713,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
     </div>
 
     <div class="rm-item active">
-      <div class="rm-phase" id="ph2-label">Phase 2 · Q4 2025</div>
+      <div class="rm-phase" id="ph2-label">Phase 2 · Q4 2026</div>
       <div class="rm-title">EXPANSION</div>
       <ul class="rm-list" id="ph2-list">
         <li>DENGUARD security suite live</li>
@@ -772,7 +775,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
     </div>
   </div>
   <div class="footer-bottom">
-    <p id="f-legal">© 2025 FoxLink Protocol. All rights reserved. Not financial advice.</p>
+    <p id="f-legal">© 2026 FoxLink Protocol. All rights reserved. Not financial advice.</p>
     <p>BUILT ON BASE · CHAIN ID 8453</p>
   </div>
 </footer>
@@ -860,7 +863,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 // TRANSLATIONS
 const T = {
   en: {
-    'hero-eyebrow': 'Intelligent Agent Protocol · Base Chain · Est. 2025',
+    'hero-eyebrow': 'Intelligent Agent Protocol · Base Chain · Est. 2026',
     'hero-sub': 'A modular AI agent network built on Base — where fox-grade intelligence meets on-chain connectivity. Autonomous agents that think, link, and act across decentralized protocols.',
     'cta1': 'Explore Agents', 'cta2': '$FXLK Token',
     'about-title': 'WHY<br>FOXLINK?',
@@ -881,9 +884,9 @@ const T = {
     'tl-utility-desc': 'Pay agent execution fees · Stake to unlock advanced agents · Vote on protocol governance · Earn from agent revenue sharing',
     'b1':'Community & Ecosystem','b2':'Agent Rewards Pool','b3':'Team & Advisors','b4':'DAO Treasury','b5':'Liquidity Provision',
     'rm-title': 'BUILD<br>TIMELINE',
-    'ph1-label': 'Phase 1 · Q3 2025',
+    'ph1-label': 'Phase 1 · Q3 2026',
     'ph1-list': ['Protocol architecture design and core contracts','VULPES and SLYPH agent alpha deployment','$FXLK token deployment on Base Mainnet','Initial DEX listing on Uniswap V3 Base'],
-    'ph2-label': 'Phase 2 · Q4 2025',
+    'ph2-label': 'Phase 2 · Q4 2026',
     'ph2-list': ['DENGUARD security suite live','LIQUIX yield optimizer beta launch','Agent dashboard public release','First 1,000 active agent wallet milestone'],
     'ph3-label': 'Phase 3 · Q1–Q2 2026',
     'ph3-list': ['All 7 agents fully operational','GOVFOX and NARRATIX mainnet deployment','FoxLink DAO governance activation','Agent marketplace public launch'],
@@ -891,10 +894,10 @@ const T = {
     'ph4-list': ['Cross-chain agent expansion to Arbitrum and Optimism','Agent-to-agent communication protocol layer','Third-party agent SDK open-source release','Target 10,000+ active agent deployments'],
     'f-copy': 'Intelligent Agent Protocol<br>Built on Base · $FXLK · Chain ID 8453',
     'f-col1-title': 'Protocol', 'f-col2-title': 'Community',
-    'f-legal': '© 2025 FoxLink Protocol. All rights reserved. Not financial advice.'
+    'f-legal': '© 2026 FoxLink Protocol. All rights reserved. Not financial advice.'
   },
   zh: {
-    'hero-eyebrow': '智能代理协议 · Base 链 · 成立于 2025',
+    'hero-eyebrow': '智能代理协议 · Base 链 · 成立于 2026',
     'hero-sub': '构建于 Base 上的模块化 AI 代理网络——狐狸级智能与链上连接性的完美融合。自主代理在去中心化协议间思考、连接并执行。',
     'cta1': '探索代理', 'cta2': '$FXLK 代币',
     'about-title': '为何选择<br>FOXLINK?',
@@ -915,9 +918,9 @@ const T = {
     'tl-utility-desc': '支付代理执行费用 · 质押解锁高级代理 · 参与协议治理投票 · 获取代理收益分成',
     'b1':'社区与生态系统','b2':'代理奖励池','b3':'团队与顾问','b4':'DAO 国库','b5':'流动性提供',
     'rm-title': '建设<br>时间线',
-    'ph1-label': '第一阶段 · 2025 年 Q3',
+    'ph1-label': '第一阶段 · 2026 年 Q3',
     'ph1-list': ['协议架构设计与核心合约','VULPES 和 SLYPH 代理 Alpha 部署','$FXLK 代币在 Base 主网部署','Uniswap V3 Base 初始 DEX 上市'],
-    'ph2-label': '第二阶段 · 2025 年 Q4',
+    'ph2-label': '第二阶段 · 2026 年 Q4',
     'ph2-list': ['DENGUARD 安全套件正式上线','LIQUIX 收益优化器 Beta 发布','代理控制台公开发布','首个 1,000 个活跃代理钱包里程碑'],
     'ph3-label': '第三阶段 · 2026 年 Q1–Q2',
     'ph3-list': ['全部 7 个代理完全运行','GOVFOX 和 NARRATIX 主网部署','FoxLink DAO 治理激活','代理市场公开上线'],
@@ -925,10 +928,10 @@ const T = {
     'ph4-list': ['跨链代理扩展至 Arbitrum 和 Optimism','代理间通信协议层','第三方代理 SDK 开源发布','目标 10,000+ 活跃代理部署'],
     'f-copy': '智能代理协议<br>构建于 Base · $FXLK · Chain ID 8453',
     'f-col1-title': '协议', 'f-col2-title': '社区',
-    'f-legal': '© 2025 FoxLink 协议。保留所有权利。非财务建议。'
+    'f-legal': '© 2026 FoxLink 协议。保留所有权利。非财务建议。'
   },
   ja: {
-    'hero-eyebrow': 'インテリジェントエージェントプロトコル · Baseチェーン · 2025年設立',
+    'hero-eyebrow': 'インテリジェントエージェントプロトコル · Baseチェーン · 2026年設立',
     'hero-sub': 'Base上に構築されたモジュラーAIエージェントネットワーク。フォックスレベルの知性とオンチェーン接続性を融合。分散型プロトコル全体で自律的に思考し、接続し、行動するエージェント群。',
     'cta1': 'エージェントを見る', 'cta2': '$FXLKトークン',
     'about-title': 'なぜ<br>FOXLINK?',
@@ -949,9 +952,9 @@ const T = {
     'tl-utility-desc': 'エージェント実行手数料の支払い · 高度なエージェントのアンロックのためのステーキング · プロトコルガバナンスへの投票 · エージェント収益シェアリングから獲得',
     'b1':'コミュニティ＆エコシステム','b2':'エージェント報酬プール','b3':'チーム＆アドバイザー','b4':'DAOトレジャリー','b5':'流動性提供',
     'rm-title': 'ビルド<br>タイムライン',
-    'ph1-label': 'フェーズ1 · 2025年Q3',
+    'ph1-label': 'フェーズ1 · 2026年Q3',
     'ph1-list': ['プロトコルアーキテクチャ設計とコアコントラクト','VULPESとSLYPHエージェントアルファデプロイ','Base Mainnetへの$FXLKトークンデプロイ','Uniswap V3 Baseでの初期DEX上場'],
-    'ph2-label': 'フェーズ2 · 2025年Q4',
+    'ph2-label': 'フェーズ2 · 2026年Q4',
     'ph2-list': ['DENGUARDセキュリティスイート稼働','LIQUIX収益オプティマイザーベータ版リリース','エージェントダッシュボード一般公開','アクティブエージェントウォレット1,000件達成'],
     'ph3-label': 'フェーズ3 · 2026年Q1–Q2',
     'ph3-list': ['全7エージェント完全稼働','GOVFOXとNARRATIXのメインネットデプロイ','FoxLink DAOガバナンス有効化','エージェントマーケットプレイス一般公開'],
@@ -959,10 +962,10 @@ const T = {
     'ph4-list': ['ArbitrumとOptimismへのクロスチェーンエージェント展開','エージェント間通信プロトコルレイヤー','サードパーティエージェントSDKオープンソースリリース','アクティブエージェントデプロイ10,000件以上を目標'],
     'f-copy': 'インテリジェントエージェントプロトコル<br>Base上に構築 · $FXLK · Chain ID 8453',
     'f-col1-title': 'プロトコル', 'f-col2-title': 'コミュニティ',
-    'f-legal': '© 2025 FoxLinkプロトコル。全著作権所有。投資アドバイスではありません。'
+    'f-legal': '© 2026 FoxLinkプロトコル。全著作権所有。投資アドバイスではありません。'
   },
   ar: {
-    'hero-eyebrow': 'بروتوكول الوكيل الذكي · سلسلة Base · تأسس 2025',
+    'hero-eyebrow': 'بروتوكول الوكيل الذكي · سلسلة Base · تأسس 2026',
     'hero-sub': 'شبكة وكلاء ذكاء اصطناعي معيارية مبنية على Base — حيث يلتقي الذكاء على مستوى الثعلب مع الاتصال على السلسلة. وكلاء مستقلون يفكرون ويربطون ويتصرفون عبر البروتوكولات اللامركزية.',
     'cta1': 'استكشاف الوكلاء', 'cta2': 'رمز $FXLK',
     'about-title': 'لماذا<br>FOXLINK?',
@@ -983,9 +986,9 @@ const T = {
     'tl-utility-desc': 'دفع رسوم تنفيذ الوكيل · الرهن لفتح الوكلاء المتقدمين · التصويت على حوكمة البروتوكول · الكسب من مشاركة إيرادات الوكيل',
     'b1':'المجتمع والنظام البيئي','b2':'مجمع مكافآت الوكيل','b3':'الفريق والمستشارون','b4':'خزينة DAO','b5':'توفير السيولة',
     'rm-title': 'الجدول<br>الزمني',
-    'ph1-label': 'المرحلة 1 · Q3 2025',
+    'ph1-label': 'المرحلة 1 · Q3 2026',
     'ph1-list': ['تصميم معمارية البروتوكول والعقود الأساسية','نشر ألفا وكيل VULPES وSLYPH','نشر رمز $FXLK على Base Mainnet','الإدراج الأولي في DEX على Uniswap V3 Base'],
-    'ph2-label': 'المرحلة 2 · Q4 2025',
+    'ph2-label': 'المرحلة 2 · Q4 2026',
     'ph2-list': ['مجموعة أمان DENGUARD مباشرة','إطلاق نسخة بيتا محسّن العائد LIQUIX','إصدار لوحة تحكم الوكيل للعموم','إنجاز أول 1,000 محفظة وكيل نشطة'],
     'ph3-label': 'المرحلة 3 · Q1-Q2 2026',
     'ph3-list': ['جميع الوكلاء السبعة يعملون بالكامل','نشر GOVFOX وNARRATIX على الشبكة الرئيسية','تفعيل حوكمة FoxLink DAO','الإطلاق العام لسوق الوكيل'],
@@ -993,7 +996,7 @@ const T = {
     'ph4-list': ['توسع الوكيل عبر السلاسل إلى Arbitrum وOptimism','طبقة بروتوكول التواصل بين الوكلاء','إصدار SDK وكيل طرف ثالث مفتوح المصدر','استهداف أكثر من 10,000 نشر وكيل نشط'],
     'f-copy': 'بروتوكول الوكيل الذكي<br>مبني على Base · $FXLK · Chain ID 8453',
     'f-col1-title': 'البروتوكول', 'f-col2-title': 'المجتمع',
-    'f-legal': '© 2025 FoxLink Protocol. جميع الحقوق محفوظة. ليس نصيحة مالية.'
+    'f-legal': '© 2026 FoxLink Protocol. جميع الحقوق محفوظة. ليس نصيحة مالية.'
   }
 };
 
