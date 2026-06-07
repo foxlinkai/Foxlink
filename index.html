@@ -242,6 +242,10 @@ section{padding:112px 48px;position:relative;z-index:2;}
 }
 .a-desc{font-size:11px;line-height:1.95;color:var(--gray);}
 .a-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;}
+
+.a-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:3px;transition:all 0.2s;}
+.a-link:hover{color:var(--white);border-color:var(--white);}
+.a-link::after{content:'→';font-size:12px;}
 .a-tag{font-size:8px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);padding:3px 8px;color:var(--gray);}
 
 /* ABOUT */
@@ -605,6 +609,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
       <div class="a-ticker">$VLP · TRADING AGENT</div>
       <p class="a-desc" id="ag1">On-chain trading intelligence. Monitors DeFi pools, detects arbitrage opportunities, and executes swaps autonomously on Base with MEV protection and slippage optimization.</p>
       <div class="a-tags"><span class="a-tag">DeFi</span><span class="a-tag">Trading</span><span class="a-tag">MEV Shield</span></div>
+      <a href="/vulpes.html" class="a-link" onclick="event.stopPropagation()">View Details</a>
     </div>
 
     <div class="a-card" data-agent="chainlnk"><div class="a-num">02</div>
@@ -612,6 +617,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
       <div class="a-ticker">$CLX · BRIDGE AGENT</div>
       <p class="a-desc" id="ag2">Cross-chain bridge orchestrator. Finds optimal routes between Base, Ethereum mainnet, and other L2s. Manages multi-step bridging with real-time gas optimization.</p>
       <div class="a-tags"><span class="a-tag">Bridging</span><span class="a-tag">Cross-chain</span><span class="a-tag">Gas Opt</span></div>
+      <a href="/chainlnk.html" class="a-link" onclick="event.stopPropagation()">View Details</a>
     </div>
 
     <div class="a-card" data-agent="slyph"><div class="a-num">03</div>
@@ -619,6 +625,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
       <div class="a-ticker">$SLY · INTEL AGENT</div>
       <p class="a-desc" id="ag3">On-chain analytics and market intelligence. Aggregates wallet behavior, protocol TVL shifts, and sentiment signals to generate actionable DeFi insights.</p>
       <div class="a-tags"><span class="a-tag">Analytics</span><span class="a-tag">Sentiment</span><span class="a-tag">Signals</span></div>
+      <a href="/slyph.html" class="a-link" onclick="event.stopPropagation()">View Details</a>
     </div>
 
     <div class="a-card" data-agent="denguard"><div class="a-num">04</div>
@@ -626,6 +633,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
       <div class="a-ticker">$DNG · SECURITY AGENT</div>
       <p class="a-desc" id="ag4">Smart contract auditor and wallet guardian. Scans transactions before execution, flags rug patterns, and monitors wallet exposure in real-time on Base.</p>
       <div class="a-tags"><span class="a-tag">Security</span><span class="a-tag">Audit</span><span class="a-tag">Rug Detect</span></div>
+      <a href="/denguard.html" class="a-link" onclick="event.stopPropagation()">View Details</a>
     </div>
 
     <div class="a-card" data-agent="liquix"><div class="a-num">05</div>
@@ -633,6 +641,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
       <div class="a-ticker">$LQX · YIELD AGENT</div>
       <p class="a-desc" id="ag5">Autonomous liquidity manager. Optimizes LP positions across Base DeFi protocols, auto-compounds yields, rebalances pools, and harvests rewards at peak efficiency.</p>
       <div class="a-tags"><span class="a-tag">Yield</span><span class="a-tag">LP Mgmt</span><span class="a-tag">Auto-Compound</span></div>
+      <a href="/liquix.html" class="a-link" onclick="event.stopPropagation()">View Details</a>
     </div>
 
     <div class="a-card" data-agent="govfox"><div class="a-num">06</div>
@@ -640,6 +649,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
       <div class="a-ticker">$GVF · DAO AGENT</div>
       <p class="a-desc" id="ag6">Governance participation agent. Tracks protocol proposals across the Base ecosystem, summarizes implications, and votes autonomously based on $FXLK holder preferences.</p>
       <div class="a-tags"><span class="a-tag">DAO</span><span class="a-tag">Governance</span><span class="a-tag">Voting</span></div>
+      <a href="/govfox.html" class="a-link" onclick="event.stopPropagation()">View Details</a>
     </div>
 
     <div class="a-card" data-agent="narratix"><div class="a-num">07</div>
@@ -647,6 +657,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
       <div class="a-ticker">$NRX · CONTENT AGENT</div>
       <p class="a-desc" id="ag7">On-chain content and community agent. Generates real-time market commentary, protocol announcements, and community updates — bridging on-chain data to human-readable narratives.</p>
       <div class="a-tags"><span class="a-tag">Content</span><span class="a-tag">Community</span><span class="a-tag">NLP</span></div>
+      <a href="/narratix.html" class="a-link" onclick="event.stopPropagation()">View Details</a>
     </div>
 
   </div>
@@ -817,6 +828,8 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
 <div class="modal-overlay" id="agentModal" onclick="closeModalBg(event)">
   <div class="modal-box" id="modalBox">
     <button class="modal-close" type="button" onclick="closeModal()">x</button>
+    <a id="modalPageLink" href="#" style="position:absolute;top:18px;right:60px;z-index:10;height:34px;padding:0 10px;border:1px solid #2a2a2a;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#555;text-decoration:none;display:flex;align-items:center;gap:4px;transition:all 0.2s;background:#000;" onmouseover="this.style.color='#fff';this.style.borderColor='#555'" onmouseout="this.style.color='#555';this.style.borderColor='#2a2a2a'">Full Page ↗</a>
+        
     <div class="modal-header">
       <div class="modal-eyebrow" id="modalEyebrow">FOXLINK AGENT</div>
       <div class="modal-title" id="modalTitle">VULPES</div>
@@ -851,7 +864,7 @@ footer{border-top:1px solid var(--border);padding:64px 48px 32px;position:relati
           <button type="button" onclick="copyContract()">COPY</button>
         </div>
       </div>
-    </div>
+      </div>
   </div>
 </div>
 
@@ -1197,6 +1210,8 @@ function openModal(key){
   document.getElementById('modalFeatures').innerHTML = a.features.map(f=>`<li>${f}</li>`).join('');
   document.getElementById('modalUseCases').innerHTML = a.useCases.map(f=>`<li>${f}</li>`).join('');
   document.getElementById('agentModal').classList.add('open');
+  const pageLink = document.getElementById('modalPageLink');
+  if(pageLink) pageLink.href = '/' + key + '.html';
   document.body.style.overflow = 'hidden';
 }
 function closeModal(){
