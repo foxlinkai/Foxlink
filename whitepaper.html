@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FoxLink Whitepaper — Intelligent Agent Protocol on Base</title>
+<meta name="description" content="The official FoxLink Protocol whitepaper. Technical architecture, tokenomics, and roadmap for the intelligent agent network on Base.">
+<meta property="og:title" content="FoxLink Whitepaper">
+<meta property="og:description" content="The official FoxLink Protocol whitepaper. 7 autonomous AI agents on Base.">
+<meta property="og:url" content="https://foxlinkai.xyz/whitepaper.html">
+<link rel="canonical" href="https://foxlinkai.xyz/whitepaper.html">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000'/%3E%3Ctext x='50' y='70' font-size='70' text-anchor='middle' fill='white' font-family='Arial'%3E◈%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #000;
+  --white: #fff;
+  --gray: #666;
+  --dim: #1c1c1c;
+  --border: #222;
+  --accent: #fff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Space Mono', monospace;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === NAV === */
+.nav {
+  position: sticky; top: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+.nav-back {
+  color: var(--white); text-decoration: none;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.nav-back:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.nav-back::before { content: '←'; font-size: 14px; }
+.nav-mark {
+  font-size: 12px; letter-spacing: 0.25em;
+  color: var(--gray); text-transform: uppercase;
+}
+
+/* === CONTAINER === */
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 24px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+/* === COVER === */
+.cover {
+  padding: 40px 0 60px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 60px;
+}
+.cover-tag {
+  font-size: 10px; letter-spacing: 0.4em; color: var(--gray);
+  text-transform: uppercase; margin-bottom: 24px;
+}
+.cover-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 11vw, 96px);
+  line-height: 0.95; letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.cover-title .alt {
+  -webkit-text-stroke: 1px var(--white);
+  color: transparent;
+}
+.cover-sub {
+  font-size: 12px; letter-spacing: 0.3em;
+  color: var(--gray); text-transform: uppercase;
+  margin-top: 20px;
+}
+.cover-meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-top: 40px;
+  font-size: 11px; letter-spacing: 0.15em;
+  color: var(--gray); text-transform: uppercase;
+}
+.cover-meta span::before {
+  content: '◈ '; color: var(--white);
+}
+
+/* === SECTION === */
+section { margin-bottom: 56px; scroll-margin-top: 80px; }
+.sec-num {
+  font-size: 10px; letter-spacing: 0.3em; color: var(--gray);
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.sec-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 6vw, 44px);
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+section p {
+  font-size: 14px; line-height: 1.8;
+  margin-bottom: 16px; color: #ccc;
+}
+section p strong { color: var(--white); }
+.lead {
+  font-size: 16px !important; color: var(--white) !important;
+  line-height: 1.7 !important;
+  border-left: 2px solid var(--white);
+  padding-left: 20px; margin-bottom: 28px !important;
+}
+
+/* === LISTS === */
+ul.dash { list-style: none; margin: 16px 0 24px; }
+ul.dash li {
+  font-size: 14px; color: #ccc;
+  padding: 8px 0 8px 24px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+ul.dash li:last-child { border-bottom: none; }
+ul.dash li::before {
+  content: '—'; position: absolute; left: 0;
+  color: var(--gray);
+}
+ul.dash li strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 13px; letter-spacing: 0.08em; }
+
+/* === AGENT CARDS === */
+.agents { display: grid; gap: 0; margin: 32px 0; }
+.agent {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.agent:last-child { border-bottom: 1px solid var(--border); }
+.agent-id {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px; color: var(--gray);
+  line-height: 1;
+}
+.agent-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.agent-tag {
+  font-size: 10px; letter-spacing: 0.2em; color: var(--gray);
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.agent-desc { font-size: 13px; color: #ccc; line-height: 1.7; }
+
+/* === STAT BLOCKS === */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
+  margin: 24px 0 32px;
+  border: 1px solid var(--border);
+}
+.stat {
+  padding: 24px 20px;
+  border-right: 1px solid var(--border);
+  text-align: left;
+}
+.stat:last-child { border-right: none; }
+.stat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px; line-height: 1;
+}
+.stat-lbl {
+  font-size: 9px; letter-spacing: 0.25em;
+  color: var(--gray); text-transform: uppercase;
+  margin-top: 8px;
+}
+@media (max-width: 540px) {
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat:last-child { border-bottom: none; }
+}
+
+/* === DISTRIBUTION === */
+.dist-row {
+  display: flex; justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.dist-row:last-child { border-bottom: none; }
+.dist-pct {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; color: var(--white);
+  min-width: 60px;
+}
+.dist-lbl { color: #ccc; flex: 1; padding: 0 16px; }
+.dist-bar {
+  width: 100px; height: 2px; background: var(--dim);
+  position: relative;
+}
+.dist-bar::after {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  background: var(--white);
+  width: var(--w);
+}
+
+/* === TIMELINE === */
+.timeline { margin: 24px 0; }
+.phase {
+  padding: 20px 0 20px 32px;
+  border-left: 1px solid var(--border);
+  position: relative;
+}
+.phase::before {
+  content: ''; position: absolute;
+  left: -5px; top: 24px;
+  width: 9px; height: 9px;
+  background: var(--white);
+}
+.phase.future::before { background: var(--dim); border: 1px solid var(--border); }
+.phase-quarter {
+  font-size: 10px; letter-spacing: 0.25em;
+  color: var(--gray); text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.phase-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.phase-desc { font-size: 13px; color: #ccc; line-height: 1.6; }
+
+/* === CALLOUT === */
+.callout {
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-size: 13px; color: #ccc;
+  line-height: 1.7;
+  position: relative;
+}
+.callout::before {
+  content: '⚠'; position: absolute;
+  top: -8px; left: 16px;
+  background: var(--black); padding: 0 8px;
+  font-size: 14px;
+}
+
+/* === TOC === */
+.toc {
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin-bottom: 60px;
+}
+.toc-head {
+  font-size: 10px; letter-spacing: 0.3em;
+  color: var(--gray); text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.toc ol { list-style: none; counter-reset: toc; }
+.toc li {
+  counter-increment: toc;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 12px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.toc li:last-child { border-bottom: none; }
+.toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  color: var(--gray);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+.toc a {
+  color: #ccc; text-decoration: none;
+  flex: 1;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.toc a:hover { color: var(--white); }
+
+/* === FOOTER === */
+.foot {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 10px; letter-spacing: 0.2em;
+  color: var(--gray); text-transform: uppercase;
+}
+.foot a {
+  color: var(--white); text-decoration: none;
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 2px;
+}
+
+/* === HIGHLIGHT === */
+mark {
+  background: transparent;
+  color: var(--white);
+  border-bottom: 1px solid var(--white);
+  padding-bottom: 2px;
+}
+
+/* === MOTION === */
+@media (prefers-reduced-motion: no-preference) {
+  section, .cover, .toc { animation: fadeUp 0.6s ease-out both; }
+  section:nth-of-type(1) { animation-delay: 0.05s; }
+  section:nth-of-type(2) { animation-delay: 0.1s; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-back" href="/">Home</a>
+  <span class="nav-mark">◈ Whitepaper v1.0</span>
+</nav>
+
+<div class="wrap">
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="cover-tag">FoxLink Protocol · Whitepaper</div>
+    <h1 class="cover-title">FOX<span class="alt">LINK</span></h1>
+    <div class="cover-sub">Intelligent Agent Protocol · Base Chain</div>
+    <div class="cover-meta">
+      <span>Version 1.0</span>
+      <span>June 2026</span>
+      <span>Chain ID 8453</span>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-head">Table of Contents</div>
+    <ol>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#solution">FoxLink Protocol</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#agents">The Seven Agents</a></li>
+      <li><a href="#token">Tokenomics</a></li>
+      <li><a href="#tech">Technology Stack</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#risks">Risks & Disclaimers</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. ABSTRACT -->
+  <section id="abstract">
+    <div class="sec-num">01</div>
+    <h2 class="sec-title">Abstract</h2>
+    <p class="lead">FoxLink is a modular protocol of seven autonomous AI agents deployed on Base — Coinbase's Layer 2 network. Each agent specializes in a distinct on-chain function: trading, bridging, analytics, security, yield, governance, and content.</p>
+    <p>Together, they form a coordinated intelligence layer that abstracts the complexity of decentralized finance — allowing users to interact with DeFi through delegated agency rather than manual execution.</p>
+    <p>The protocol is powered by <strong>$FXLK</strong>, the native utility and governance token with a fixed supply of one billion units.</p>
+  </section>
+
+  <!-- 2. PROBLEM -->
+  <section id="problem">
+    <div class="sec-num">02</div>
+    <h2 class="sec-title">The Problem</h2>
+    <p>Decentralized finance has grown faster than the tools required to navigate it. The modern DeFi user faces:</p>
+    <ul class="dash">
+      <li><strong>Fragmentation</strong>Hundreds of protocols across dozens of chains, each with its own interface, mechanics, and risk profile.</li>
+      <li><strong>Cognitive Load</strong>Profitable participation requires constant monitoring of yields, gas prices, governance proposals, and security threats.</li>
+      <li><strong>Speed Asymmetry</strong>MEV bots and institutional actors operate at machine speed. Retail users cannot compete on equal terms.</li>
+      <li><strong>Security Blind Spots</strong>Smart contract exploits, rug pulls, and malicious approvals continue to drain billions annually from non-expert users.</li>
+    </ul>
+    <p>The result: DeFi remains accessible in theory but practically reserved for those who can dedicate their full attention to it.</p>
+  </section>
+
+  <!-- 3. SOLUTION -->
+  <section id="solution">
+    <div class="sec-num">03</div>
+    <h2 class="sec-title">FoxLink Protocol</h2>
+    <p class="lead">FoxLink replaces manual interaction with <mark>delegated autonomous agency</mark>. Users define intent; agents execute.</p>
+    <p>The protocol operates on a simple principle: <strong>specialized intelligence outperforms generalized attention</strong>. Rather than one user managing seven functions poorly, seven agents each handle one function autonomously.</p>
+    <p>Each agent runs continuously on Base — observing chain state, evaluating opportunities, and executing transactions within parameters set by token-weighted governance and user-level preferences.</p>
+  </section>
+
+  <!-- 4. ARCHITECTURE -->
+  <section id="architecture">
+    <div class="sec-num">04</div>
+    <h2 class="sec-title">Architecture</h2>
+    <p>FoxLink is structured in three layers:</p>
+    <ul class="dash">
+      <li><strong>Coordination Layer</strong>A shared state register where agents publish intents, observations, and execution results. Built on Base smart contracts.</li>
+      <li><strong>Agent Layer</strong>Seven independent agents, each with isolated execution environments, distinct capabilities, and individual sub-tokens that signal user preference.</li>
+      <li><strong>Interface Layer</strong>User-facing tools — dashboard, mobile interface, and notification systems — that translate agent activity into human-readable signals.</li>
+    </ul>
+    <p>This separation ensures that agent failures are contained, that user preferences are respected, and that the protocol remains composable with the broader Base ecosystem.</p>
+  </section>
+
+  <!-- 5. AGENTS -->
+  <section id="agents">
+    <div class="sec-num">05</div>
+    <h2 class="sec-title">The Seven Agents</h2>
+    <p>Each agent is engineered for a specific on-chain function. Together they form the operational core of FoxLink.</p>
+
+    <div class="agents">
+      <div class="agent">
+        <div class="agent-id">01</div>
+        <div>
+          <div class="agent-name">Vulpes</div>
+          <div class="agent-tag">$VLP · Trading Agent</div>
+          <p class="agent-desc">Monitors DeFi pools on Base, detects arbitrage opportunities, and executes swaps autonomously. Built-in MEV protection and slippage optimization minimize value leakage during trade execution.</p>
+        </div>
+      </div>
+
+      <div class="agent">
+        <div class="agent-id">02</div>
+        <div>
+          <div class="agent-name">Chainlnk</div>
+          <div class="agent-tag">$CLX · Bridge Agent</div>
+          <p class="agent-desc">Orchestrates cross-chain liquidity between Base, Ethereum mainnet, and other Layer 2 networks. Manages multi-step bridging operations with real-time gas optimization.</p>
+        </div>
+      </div>
+
+      <div class="agent">
+        <div class="agent-id">03</div>
+        <div>
+          <div class="agent-name">Slyph</div>
+          <div class="agent-tag">$SLY · Intel Agent</div>
+          <p class="agent-desc">On-chain analytics and market intelligence. Aggregates wallet behavior, protocol TVL shifts, and sentiment signals to generate actionable DeFi insights.</p>
+        </div>
+      </div>
+
+      <div class="agent">
+        <div class="agent-id">04</div>
+        <div>
+          <div class="agent-name">Denguard</div>
+          <div class="agent-tag">$DNG · Security Agent</div>
+          <p class="agent-desc">Smart contract auditor and wallet guardian. Scans transactions before execution, flags rug patterns, and monitors wallet exposure to malicious actors in real time.</p>
+        </div>
+      </div>
+
+      <div class="agent">
+        <div class="agent-id">05</div>
+        <div>
+          <div class="agent-name">Liquix</div>
+          <div class="agent-tag">$LQX · Yield Agent</div>
+          <p class="agent-desc">Autonomous liquidity manager. Optimizes LP positions across Base DeFi protocols, auto-compounds yields, rebalances pools, and harvests rewards at peak efficiency.</p>
+        </div>
+      </div>
+
+      <div class="agent">
+        <div class="agent-id">06</div>
+        <div>
+          <div class="agent-name">Govfox</div>
+          <div class="agent-tag">$GVF · Governance Agent</div>
+          <p class="agent-desc">Governance participation agent. Tracks protocol proposals across the Base ecosystem, summarizes implications, and votes autonomously based on $FXLK holder preferences.</p>
+        </div>
+      </div>
+
+      <div class="agent">
+        <div class="agent-id">07</div>
+        <div>
+          <div class="agent-name">Narratix</div>
+          <div class="agent-tag">$NRX · Content Agent</div>
+          <p class="agent-desc">On-chain content and community agent. Generates real-time market commentary, protocol announcements, and community updates — bridging on-chain data to human-readable narratives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TOKENOMICS -->
+  <section id="token">
+    <div class="sec-num">06</div>
+    <h2 class="sec-title">Tokenomics</h2>
+    <p>$FXLK is the native utility and governance token powering the FoxLink ecosystem. It is deployed as an ERC-20 standard token on Base.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">1B</div>
+        <div class="stat-lbl">Max Supply</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">$FXLK</div>
+        <div class="stat-lbl">Ticker</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">8453</div>
+        <div class="stat-lbl">Chain ID</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Bebas Neue';font-size:20px;letter-spacing:0.08em;margin:32px 0 16px;">Distribution</h3>
+    <div>
+      <div class="dist-row">
+        <span class="dist-pct">40%</span>
+        <span class="dist-lbl">Community & Airdrops</span>
+        <span class="dist-bar" style="--w:100%"></span>
+      </div>
+      <div class="dist-row">
+        <span class="dist-pct">20%</span>
+        <span class="dist-lbl">Agent Rewards</span>
+        <span class="dist-bar" style="--w:50%"></span>
+      </div>
+      <div class="dist-row">
+        <span class="dist-pct">15%</span>
+        <span class="dist-lbl">Core Contributors</span>
+        <span class="dist-bar" style="--w:37%"></span>
+      </div>
+      <div class="dist-row">
+        <span class="dist-pct">15%</span>
+        <span class="dist-lbl">DAO Treasury</span>
+        <span class="dist-bar" style="--w:37%"></span>
+      </div>
+      <div class="dist-row">
+        <span class="dist-pct">10%</span>
+        <span class="dist-lbl">Liquidity Provision</span>
+        <span class="dist-bar" style="--w:25%"></span>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Bebas Neue';font-size:20px;letter-spacing:0.08em;margin:32px 0 16px;">Utility</h3>
+    <ul class="dash">
+      <li><strong>Governance</strong>$FXLK holders vote on agent parameters, treasury allocation, and protocol upgrades via Govfox.</li>
+      <li><strong>Agent Access</strong>Premium agent features and execution priority are gated by $FXLK staking thresholds.</li>
+      <li><strong>Fee Capture</strong>A portion of agent-generated fees is routed to the DAO treasury and used for buyback-and-burn.</li>
+      <li><strong>Burn Mechanism</strong>Deflationary pressure applied through periodic burns funded by protocol revenue.</li>
+    </ul>
+  </section>
+
+  <!-- 7. TECH -->
+  <section id="tech">
+    <div class="sec-num">07</div>
+    <h2 class="sec-title">Technology Stack</h2>
+    <p>FoxLink is built natively on Base — Coinbase's Layer 2 — chosen for its low gas fees, fast finality, and deep integration with the Coinbase ecosystem.</p>
+    <ul class="dash">
+      <li><strong>Network</strong>Base Mainnet · Chain ID 8453 · OP Stack rollup secured by Ethereum.</li>
+      <li><strong>Smart Contracts</strong>Solidity 0.8.x · OpenZeppelin libraries · audited by independent firms prior to mainnet deployment.</li>
+      <li><strong>Agent Runtime</strong>Off-chain inference layer with on-chain settlement. Agents publish signed intents that smart contracts validate and execute.</li>
+      <li><strong>Data Layer</strong>The Graph subgraphs for indexed event data; Chainlink oracles for off-chain price feeds.</li>
+    </ul>
+  </section>
+
+  <!-- 8. ROADMAP -->
+  <section id="roadmap">
+    <div class="sec-num">08</div>
+    <h2 class="sec-title">Roadmap</h2>
+    <p>Development is phased to ensure security and progressive decentralization.</p>
+
+    <div class="timeline">
+      <div class="phase">
+        <div class="phase-quarter">Q2 2026 · Complete</div>
+        <div class="phase-title">Genesis</div>
+        <div class="phase-desc">Protocol concept finalized. Website launched. Community channels established.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-quarter">Q3 2026 · Active</div>
+        <div class="phase-title">Foundation</div>
+        <div class="phase-desc">Smart contract development. Security audits. Closed testnet for first three agents.</div>
+      </div>
+      <div class="phase future">
+        <div class="phase-quarter">Q4 2026</div>
+        <div class="phase-title">Token Launch</div>
+        <div class="phase-desc">$FXLK token generation event. Liquidity bootstrapping. Initial agent activation on mainnet.</div>
+      </div>
+      <div class="phase future">
+        <div class="phase-quarter">Q1 2027</div>
+        <div class="phase-title">Expansion</div>
+        <div class="phase-desc">Full seven-agent suite live. DAO governance activation. Partnerships across Base ecosystem.</div>
+      </div>
+      <div class="phase future">
+        <div class="phase-quarter">2027+</div>
+        <div class="phase-title">Sovereignty</div>
+        <div class="phase-desc">Cross-chain expansion. Progressive decentralization of core team functions. Agent SDK for third-party developers.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. RISKS -->
+  <section id="risks">
+    <div class="sec-num">09</div>
+    <h2 class="sec-title">Risks & Disclaimers</h2>
+    <p>Participation in FoxLink Protocol involves risks. Users should evaluate these carefully before engaging with the protocol or acquiring $FXLK tokens.</p>
+
+    <div class="callout">
+      <strong>Smart Contract Risk.</strong> Despite audits, smart contracts may contain vulnerabilities. Funds interacting with the protocol may be at risk.
+    </div>
+
+    <div class="callout">
+      <strong>Market Risk.</strong> $FXLK is a volatile asset. Token value may decline substantially or to zero. Past performance does not indicate future results.
+    </div>
+
+    <div class="callout">
+      <strong>Regulatory Risk.</strong> The regulatory environment for digital assets is evolving. Changes in law may affect protocol operations or token utility.
+    </div>
+
+    <div class="callout">
+      <strong>Agent Risk.</strong> Autonomous agents execute transactions based on programmed logic. Unexpected market conditions may produce suboptimal or loss-generating outcomes.
+    </div>
+
+    <p style="margin-top:24px;font-size:12px;color:var(--gray);">
+      This document is for informational purposes only and does not constitute financial, legal, or investment advice. FoxLink Protocol is not a registered security. Nothing herein should be interpreted as an offer to sell or solicitation to buy any token in any jurisdiction where such offer would be unlawful.
+    </p>
+  </section>
+
+  <!-- 10. CONCLUSION -->
+  <section id="conclusion">
+    <div class="sec-num">10</div>
+    <h2 class="sec-title">Conclusion</h2>
+    <p class="lead">FoxLink represents a shift from <mark>manual to delegated</mark> participation in decentralized finance.</p>
+    <p>By distributing on-chain functions across seven specialized autonomous agents, the protocol gives users access to capabilities that previously required either deep technical expertise or constant attention.</p>
+    <p>The fox symbolizes adaptive intelligence — cunning, fast, networked. The chain link represents connectivity and composability. Together, they describe a protocol designed to think, link, and act across the decentralized landscape.</p>
+    <p style="margin-top:32px;"><strong>The hunt begins.</strong></p>
+  </section>
+
+  <!-- FOOT -->
+  <footer class="foot">
+    <p>FoxLink Protocol · Built on Base · © 2026</p>
+    <p style="margin-top:12px;"><a href="/">foxlinkai.xyz</a> · <a href="https://x.com/FoxLinkAi" target="_blank" rel="noopener">@FoxLinkAi</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
