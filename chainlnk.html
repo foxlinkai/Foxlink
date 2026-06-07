@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CHAINLNK — Bridge Agent · FoxLink Protocol</title>
+<meta name="description" content="CHAINLNK ($CLX) — the bridge agent of the FoxLink Protocol. Every chain. One operator.">
+<meta property="og:title" content="CHAINLNK — Bridge Agent">
+<meta property="og:description" content="Every chain. One operator. $CLX agent on Base.">
+<meta property="og:url" content="https://foxlinkai.xyz/agents/chainlnk.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@FoxLinkAi">
+<link rel="canonical" href="https://foxlinkai.xyz/agents/chainlnk.html">
+<link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000'/%3E%3Ctext x='50' y='70' font-size='70' text-anchor='middle' fill='white' font-family='Arial'%3E◈%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #000;
+  --white: #fff;
+  --gray: #666;
+  --dim: #1c1c1c;
+  --border: #222;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Space Mono', monospace;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+.nav {
+  position: sticky; top: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+.nav-back {
+  color: var(--white); text-decoration: none;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.nav-back:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.nav-back::before { content: '←'; font-size: 14px; }
+.nav-mark {
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--gray); text-transform: uppercase;
+}
+
+/* WRAP */
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 60px 24px 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* HERO */
+.hero {
+  padding: 40px 0 60px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.hero-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(120px, 30vw, 200px);
+  line-height: 1; letter-spacing: -0.02em;
+  position: absolute; top: 0; right: 0;
+  color: var(--dim);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-tag {
+  font-size: 10px; letter-spacing: 0.4em; color: var(--gray);
+  text-transform: uppercase; margin-bottom: 24px;
+}
+.hero-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 14vw, 120px);
+  line-height: 0.9; letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.hero-role {
+  font-size: 13px; letter-spacing: 0.3em;
+  color: var(--white); text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-tagline {
+  font-size: 18px; color: #ccc;
+  font-style: italic;
+  border-left: 2px solid var(--white);
+  padding-left: 20px;
+  max-width: 520px;
+}
+.hero-meta {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-top: 40px;
+  font-size: 10px; letter-spacing: 0.2em;
+  color: var(--gray); text-transform: uppercase;
+}
+.hero-meta span::before {
+  content: '◈ '; color: var(--white);
+}
+
+/* SECTION */
+section { margin: 60px 0; }
+.sec-num {
+  font-size: 10px; letter-spacing: 0.3em; color: var(--gray);
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.sec-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 6vw, 44px);
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+section p {
+  font-size: 14px; line-height: 1.8;
+  margin-bottom: 16px; color: #ccc;
+}
+section p strong { color: var(--white); }
+
+/* CAPABILITIES */
+.caps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
+  border: 1px solid var(--border);
+}
+.cap {
+  padding: 24px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cap:nth-child(2n) { border-right: none; }
+.cap-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.cap-desc { font-size: 13px; color: #ccc; line-height: 1.7; }
+@media (max-width: 600px) {
+  .cap { border-right: none; }
+}
+
+/* FLOW */
+.flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+.flow-step {
+  padding: 28px 20px;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+.flow-step:last-child { border-right: none; }
+.flow-step::after {
+  content: '→';
+  position: absolute;
+  right: -10px; top: 50%;
+  transform: translateY(-50%);
+  background: var(--black);
+  padding: 0 4px;
+  color: var(--gray);
+  font-size: 14px;
+}
+.flow-step:last-child::after { display: none; }
+.flow-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px; color: var(--gray);
+  line-height: 1;
+}
+.flow-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px; letter-spacing: 0.05em;
+  margin: 12px 0 8px;
+}
+.flow-desc { font-size: 12px; color: #ccc; line-height: 1.6; }
+@media (max-width: 600px) {
+  .flow-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .flow-step:last-child { border-bottom: none; }
+  .flow-step::after { display: none; }
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+.stat {
+  padding: 24px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px; line-height: 1;
+}
+.stat-lbl {
+  font-size: 9px; letter-spacing: 0.25em;
+  color: var(--gray); text-transform: uppercase;
+  margin-top: 8px;
+}
+@media (max-width: 540px) {
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat:last-child { border-bottom: none; }
+}
+
+/* INTEGRATIONS */
+.tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 24px 0;
+}
+.tag {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #ccc;
+  transition: all 0.2s;
+}
+.tag:hover {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+/* PAGER */
+.pager {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.pager a {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid var(--border);
+  color: var(--white);
+  text-decoration: none;
+  transition: all 0.2s;
+  max-width: 48%;
+}
+.pager a:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+.pager-lbl {
+  font-size: 9px; letter-spacing: 0.3em;
+  color: var(--gray); text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pager a:hover .pager-lbl { color: var(--black); }
+.pager-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 0.05em;
+}
+.pager-next { text-align: right; }
+.pager-empty { visibility: hidden; }
+
+/* FOOT */
+.foot {
+  margin-top: 60px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 10px; letter-spacing: 0.2em;
+  color: var(--gray); text-transform: uppercase;
+}
+.foot a {
+  color: var(--white); text-decoration: none;
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 2px;
+}
+
+/* ANIM */
+@media (prefers-reduced-motion: no-preference) {
+  .hero, section { animation: fadeUp 0.6s ease-out both; }
+  section:nth-of-type(1) { animation-delay: 0.05s; }
+  section:nth-of-type(2) { animation-delay: 0.1s; }
+  section:nth-of-type(3) { animation-delay: 0.15s; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-back" href="/">Home</a>
+  <span class="nav-mark">◈ Agent 02 of 07</span>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-num">02</div>
+    <div class="hero-content">
+      <div class="hero-tag">FoxLink Agent Suite · Bridge Agent</div>
+      <h1 class="hero-name">CHAINLNK</h1>
+      <div class="hero-role">$CLX · Autonomous Bridge</div>
+      <p class="hero-tagline">Every chain. One operator.</p>
+      <div class="hero-meta">
+        <span>Network: Base</span>
+        <span>Chain ID: 8453</span>
+        <span>Status: Development</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MISSION -->
+  <section>
+    <div class="sec-num">01 · Mission</div>
+    <h2 class="sec-title">What CHAINLNK Does</h2>
+    <p>CHAINLNK orchestrates value movement across networks. It selects optimal routes, manages multi-step bridging, and ensures funds arrive at destination with minimal cost and maximal speed.</p>
+    <p>Cross-chain operations are the most error-prone surface in DeFi. Wrong bridge, wrong gas token, wrong network — each mistake can lock funds for hours or forever. The cognitive burden falls entirely on the user.</p>
+    <p>CHAINLNK lifts that burden. It evaluates every viable route from origin to destination, simulates outcomes, and executes the path that maximizes received value.</p>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section>
+    <div class="sec-num">02 · Capabilities</div>
+    <h2 class="sec-title">Core Functions</h2>
+    <div class="caps">
+      <div class="cap"><div class="cap-name">Route Discovery</div><div class="cap-desc">Indexes major bridges and aggregators. Finds direct and multi-hop paths between Base, Ethereum, and other L2s.</div></div>
+      <div class="cap"><div class="cap-name">Cost Simulation</div><div class="cap-desc">Pre-flight calculation of total cost: bridge fees, gas on both sides, slippage on swaps.</div></div>
+      <div class="cap"><div class="cap-name">Multi-Step Execution</div><div class="cap-desc">Handles sequential operations atomically where possible. Resumes interrupted bridges automatically.</div></div>
+      <div class="cap"><div class="cap-name">Gas Token Management</div><div class="cap-desc">Auto-acquires gas on destination chain when needed. No more stranded transfers.</div></div>
+      <div class="cap"><div class="cap-name">Failure Recovery</div><div class="cap-desc">Detects stuck transfers. Initiates recovery flows. Notifies user with actionable steps.</div></div>
+      <div class="cap"><div class="cap-name">Bridge Health Scoring</div><div class="cap-desc">Real-time scoring of bridge reliability based on TVL, recent activity, and security audits.</div></div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section>
+    <div class="sec-num">03 · How It Works</div>
+    <h2 class="sec-title">Execution Flow</h2>
+    <div class="flow">
+      <div class="flow-step"><div class="flow-num">01</div><div class="flow-name">Source</div><div class="flow-desc">User specifies origin asset, destination chain, and target asset.</div></div>
+      <div class="flow-step"><div class="flow-num">02</div><div class="flow-name">Route</div><div class="flow-desc">CHAINLNK calculates all viable paths and ranks by net value received.</div></div>
+      <div class="flow-step"><div class="flow-num">03</div><div class="flow-name">Bridge</div><div class="flow-desc">Executes selected route. Handles multi-step swaps and gas top-ups.</div></div>
+      <div class="flow-step"><div class="flow-num">04</div><div class="flow-name">Confirm</div><div class="flow-desc">Delivers asset to destination. Reports timing and cost breakdown.</div></div>
+    </div>
+  </section>
+
+  <!-- TOKEN -->
+  <section>
+    <div class="sec-num">04 · Token</div>
+    <h2 class="sec-title">$CLX Sub-Token</h2>
+    <p>$CLX is the agent-specific signal token within the FoxLink ecosystem. Holders of $CLX can prioritize CHAINLNK resources, signal preferences for agent behavior, and earn a share of fees generated by CHAINLNK executions. $CLX is not a separate asset from $FXLK — it represents allocation weight within the broader protocol.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-val">$CLX</div><div class="stat-lbl">Token</div></div>
+      <div class="stat"><div class="stat-val">Bridge</div><div class="stat-lbl">Suite</div></div>
+      <div class="stat"><div class="stat-val">Development</div><div class="stat-lbl">Status</div></div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <section>
+    <div class="sec-num">05 · Integrations</div>
+    <h2 class="sec-title">Connected Protocols</h2>
+    <p>CHAINLNK interoperates with leading protocols across the Base ecosystem. Integration list expands as protocol partnerships develop.</p>
+    <div class="tags">
+      <span class="tag">Across</span>
+      <span class="tag">Stargate</span>
+      <span class="tag">Hop</span>
+      <span class="tag">Connext</span>
+      <span class="tag">Native Base Bridge</span>
+    </div>
+  </section>
+
+  <!-- PAGER -->
+  <nav class="pager">
+    <a href="vulpes.html">
+      <div class="pager-lbl">← Previous Agent</div>
+      <div class="pager-name">VULPES</div>
+    </a>
+    <a href="slyph.html" class="pager-next">
+      <div class="pager-lbl">Next Agent →</div>
+      <div class="pager-name">SLYPH</div>
+    </a>
+  </nav>
+
+  <!-- FOOT -->
+  <footer class="foot">
+    <p>FoxLink Protocol · Built on Base · © 2026</p>
+    <p style="margin-top:12px;"><a href="/">foxlinkai.xyz</a> · <a href="/whitepaper.html">Whitepaper</a> · <a href="https://x.com/FoxLinkAi" target="_blank" rel="noopener">@FoxLinkAi</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
